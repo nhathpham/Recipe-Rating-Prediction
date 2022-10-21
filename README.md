@@ -1,44 +1,49 @@
 # Predicting Data Breaches Using Human Factors
 Authors: Nhat Pham, Lakshyana KC
-Data source: Linkedin Profiles, People Data Lab, Veris Data Breach (http://veriscommunity.net/vcdb.html)
+Data source: Kaggle dataset “Food.com - Recipes and Reviews” (https://www.kaggle.com/irkaal/foodcom-recipes-and-reviews)
 
-<h2>I/ Abstract: </h2>
-As members of Northeastern's DATA Initiative Research Lab, we partnered with InnSure, a nonprofit startup accelerator with a mission to influence a better future for the insurance industry. We would like to understand how various aspects of employee human behavior may impact the risk of cyber-breaches within firms. There are over 1000 annual publicized data breaches (Statista, 2020), resulting in $4.24 million average cost per data breach (IBM, 2021).
-<br />
-Objectives of the project include:<br />
-• Develop a web-scraping tool that can be leveraged to gather Linked-In data <br />
-• Formally propose, structure, and test hypotheses regarding human behavior and cyber 
-breaches. <br />
-• Propose a prototype for a “Cyber-Risk Index” using the behavioral attributes <br />
+<h2>I/ Background: </h2>
+<h3>1. Motivation </h3>
+- Understanding what constitutes a high-rated recipe helps us study eating habits at a societal level <br />
+- Food creators can use the prediction to modify their recipe content to improve its reception and visibility online <br />
+- Little research on predicting the online ratings of recipes <br />
+- Research focuses on developing recipe recommendation systems based on previous ratings <br />
+- We are curious to learn if there are specific combinations of ingredients or instruction features that have an influence on how much the users like the recipe <br />
 <br />
 
-![innsure](https://user-images.githubusercontent.com/87089936/196846695-f05afbed-f330-4b84-82d5-b85d2c399752.PNG)<br />
+
+<h3>2. Dataset</h3>
+The data includes a list of 500k+ recipes and a list of 1.4M reviews dated from 1999 to 2020. We chose this dataset because of its recency and large size. It contains rich text data including description, ingredients, cooking instructions, and users’ reviews, as well as numeric data on nutritional values, cooking time, and other features.
+  
+![dessert](https://user-images.githubusercontent.com/87089936/197110859-3c87f2b0-a837-4944-9bba-5a208f739593.PNG)
+![dessert2](https://user-images.githubusercontent.com/87089936/197110883-6c41ded6-00b1-40f3-af42-c4a5540c303c.PNG)
+<br />
+  
+<h3>3. Objectives</h3>
+The objective of this project was to train and compare multi-class classification models for predicting the rating of an online recipe using the ingredients, recipe instructions, nutrition and healthiness, complexity, description and title attributes. We also trained a Doc2Vec embedding model using the concatenated recipes’ ingredients and instructions text. We performed some visualizations of the recipe embedding models to better understand the dataset and characterize the embedding vectors for the recipes. We then trained multiple statistical models such as Naive Bayes (NB), Logistic Regression, Support Vector Machine (SVM), and Random Forest using different combinations of text and numerical features.<br />
+We also trained a feedforward classification model using the pre-trained embedding model weights to compare its performance with the other models. We will then evaluate the model performances using a common test dataset, and evaluation metrics such as the F1 score, Precision, Recall, and Accuracy metrics.<br />
 
 <h2>II/ Results</h2>
-★ Web Scraping and Property Identification <br />
-- We performed a review of research on similar topic, and of Linkedin profile structures, to identify human factors to consider in the analysis<br />
-- We focused solely on executive profiles, since research showed executives are significantly more vulnerable to cyber breaches than other employees<br />
-- Results:<br />
-+ A scraper tool using Selenium in Python that is able to capture various information facets of a Linked-In Profile<br />
-+ ~1000 executive profile data, with a healthy sample size, in healthcare AND non-healthcare industries. <br />
+★ Data Processing <br />
+![neural](https://user-images.githubusercontent.com/87089936/197111121-5d7dc39c-9a15-4694-9782-0735d9458ae4.PNG)
 <br />
-Example of scraped profiles:<br />
+★	Embedding Model <br />
+![image](https://user-images.githubusercontent.com/87089936/197197165-0c335767-a699-48b4-a5c6-804046a67294.png)<br />
 
-![scraped_profile](https://user-images.githubusercontent.com/87089936/196847029-8bf9742f-960f-4516-a06f-4f4c7eaa80ac.PNG)<br />
-<br />
+![image](https://user-images.githubusercontent.com/87089936/197197264-19e0da15-41f7-4287-9c59-2293a502070e.png)<br />
 
-+ Due to Linkedin's restriction on scraping, we also used Phantombuster, and People Data Labs, to scrape more executive profiles.
 
-★	Classification Model <br />
-- Random Forest<br />
-- LinearSVC<br />
-- Logistic Regression<br />
-- AdaBoost <br />
-- KNeighbors<br />
-- GaussianNB<br />
+★	Non-neural Network Model <br />
+- Random Forest <br />
+- Logistic Regression <br />
+- Naive Bayes <br />
+- Support Vector Machine <br />
+![nonneural1](https://user-images.githubusercontent.com/87089936/197198326-3683473d-b7c2-4f69-977d-955eef2c716a.PNG)<br />
+
+★	Feedforward Neural Network Model <br />
+![neural1](https://user-images.githubusercontent.com/87089936/197198504-2f532145-9ff3-4a53-8c45-1d1749ce4ac2.PNG)
+![nerual](https://user-images.githubusercontent.com/87089936/197198530-ff8d21f7-f1f9-4011-94bc-df8072dde418.PNG)
 
 Please see our Final Presentation for details.<br />
-
-![image](https://user-images.githubusercontent.com/87089936/196848172-0faaf7b5-27ed-4226-b97d-0e8bec0f9165.png)
 
  
